@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="eureka:war">
+    <output-path>$PROJECT_DIR$/eureka/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>eureka</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="server.war">
+      <element id="artifact" artifact-name="eureka:war exploded" />
+    </root>
+  </artifact>
+</component>
