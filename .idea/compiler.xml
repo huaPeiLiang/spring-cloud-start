@@ -7,15 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eureka" />
+        <module name="hive" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="eureka" target="1.8" />
+      <module name="hive" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="eureka" options="-parameters" />
+      <module name="hive" options="-parameters" />
     </option>
   </component>
 </project>

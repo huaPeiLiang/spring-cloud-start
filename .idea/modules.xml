@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/eureka/eureka.iml" filepath="$PROJECT_DIR$/eureka/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hive/hive.iml" filepath="$PROJECT_DIR$/hive/hive.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-start.iml" filepath="$PROJECT_DIR$/spring-cloud-start.iml" />
     </modules>
   </component>
