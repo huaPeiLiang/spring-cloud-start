@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="facade" />
         <module name="common" />
         <module name="config" />
         <module name="hive" />
@@ -13,15 +14,19 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="common" target="1.5" />
-      <module name="config" target="1.5" />
+      <module name="common" target="1.8" />
+      <module name="config" target="1.8" />
       <module name="eureka" target="1.8" />
+      <module name="facade" target="1.8" />
       <module name="hive" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-parameters" />
+      <module name="config" options="-parameters" />
       <module name="eureka" options="-parameters" />
+      <module name="facade" options="-parameters" />
       <module name="hive" options="-parameters" />
     </option>
   </component>
