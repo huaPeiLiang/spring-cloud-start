@@ -18,7 +18,7 @@ import java.util.List;
 public interface HiveApi {
 
     @RequestMapping("/hystrix/success")
-    void hystrixSuccess();
+    String hystrixSuccess();
 
     @RequestMapping("/hystrix/timeout")
     void hystrixTimeOut();

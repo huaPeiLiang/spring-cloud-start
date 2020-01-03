@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="facade" />
         <module name="common" />
         <module name="config" />
         <module name="hive" />
         <module name="eureka" />
+        <module name="hiveribbon" />
+        <module name="facade" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +20,8 @@
       <module name="eureka" target="1.8" />
       <module name="facade" target="1.8" />
       <module name="hive" target="1.8" />
+      <module name="hive1" target="1.8" />
+      <module name="hiveribbon" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -28,6 +31,8 @@
       <module name="eureka" options="-parameters" />
       <module name="facade" options="-parameters" />
       <module name="hive" options="-parameters" />
+      <module name="hive1" options="-parameters" />
+      <module name="hiveribbon" options="-parameters" />
     </option>
   </component>
 </project>

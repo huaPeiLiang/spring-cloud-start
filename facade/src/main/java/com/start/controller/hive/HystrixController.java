@@ -20,8 +20,7 @@ public class HystrixController {
     @RequestMapping("/success")
     public ReturnData hystrixSuccess(){
         try {
-            hiveApi.hystrixSuccess();
-            return ReturnData.success( );
+            return ReturnData.success( hiveApi.hystrixSuccess() );
         } catch (Exception e) {
             return ReturnData.failed(e.getMessage());
         }
