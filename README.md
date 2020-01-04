@@ -1,6 +1,6 @@
 # spring-cloud-start
 
-这是一个快速开始分布式实践的项目。该项目会持续集成分布式各种能力（Hystrix、Ribbon、OpenFeign、Bus、Hmily、RabbitMQ…），同时集成各种SDK能力（短信、邮件、pdf、推送、微信…）。文档请查看Wiki
+这是一个快速开始分布式实践的项目。该项目会持续集成分布式各种能力（Hystrix、Ribbon、OpenFeign、Bus、Hmily、RabbitMQ…），同时集成各种SDK能力（短信、邮件、pdf、推送、微信…）。文档请查看[Wiki](https://github.com/huaPeiLiang/spring-cloud-start/wiki)
 
 #### 你能用它干什么？
 
@@ -9,7 +9,7 @@
 
 #### 项目构架图
 
-![image](https://raw.githubusercontent.com/wiki/huaPeiLiang/spring-cloud-start/img/Spring%20Cloud%20Start.png)
+![image](https://raw.githubusercontent.com/wiki/huaPeiLiang/spring-cloud-start/img/Spring Cloud Start.png)
 
 #### 使用的技术
 
