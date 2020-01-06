@@ -24,10 +24,10 @@ import java.io.*;
 import java.net.ConnectException;
 import java.net.URL;
 
-public class HttpsUtils {
-    private static final Logger logger = LoggerFactory.getLogger(HttpsUtils.class);
+public class HttpsUtil {
+    private static final Logger logger = LoggerFactory.getLogger(HttpsUtil.class);
 
-    private HttpsUtils() {
+    private HttpsUtil() {
     }
 
     public static <T> T get(String requestUrl, TypeReference<?> typeReference) {
