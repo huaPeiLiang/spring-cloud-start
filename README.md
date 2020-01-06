@@ -9,7 +9,7 @@
 
 #### 项目构架图
 
-![image](https://raw.githubusercontent.com/wiki/huaPeiLiang/spring-cloud-start/img/Spring%20Cloud%20Start.png)
+![image](https://raw.githubusercontent.com/wiki/huaPeiLiang/spring-cloud-start/img/ReadMe-1.png)
 
 #### 使用的技术
 
