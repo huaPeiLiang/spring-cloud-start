@@ -21,13 +21,13 @@ public class HystrixController {
     }
 
     @RequestMapping("/timeout")
-    public void hystrixTimeOut(){
-        hystrixTestService.hystrixTimeOut();
+    public String hystrixTimeOut(){
+        return hystrixTestService.hystrixTimeOut();
     }
 
     @RequestMapping("/error")
-    public void hystrixError() throws Exception{
-        hystrixTestService.hystrixError();
+    public String hystrixError() throws Exception{
+        return hystrixTestService.hystrixError();
     }
 
 }

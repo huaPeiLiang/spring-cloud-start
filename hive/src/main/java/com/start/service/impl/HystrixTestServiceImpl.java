@@ -1,5 +1,7 @@
 package com.start.service.impl;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.start.service.HystrixTestService;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +19,22 @@ public class HystrixTestServiceImpl implements HystrixTestService {
     }
 
     @Override
-    public void hystrixTimeOut(){
+    public String hystrixTimeOut(){
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return "";
     }
 
-    public void hystrixError() throws Exception{
+    @Override
+    public String hystrixError() throws Exception{
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         throw new IOException("请求异常");
     }
 

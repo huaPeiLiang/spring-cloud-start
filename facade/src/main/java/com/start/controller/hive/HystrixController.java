@@ -29,8 +29,7 @@ public class HystrixController {
     @RequestMapping("/timeout")
     public ReturnData hystrixTimeOut(){
         try {
-            hiveApi.hystrixTimeOut();
-            return ReturnData.success( );
+            return ReturnData.success( hiveApi.hystrixTimeOut() );
         } catch (Exception e) {
             return ReturnData.failed(e.getMessage());
         }
@@ -39,8 +38,7 @@ public class HystrixController {
     @RequestMapping("/error")
     public ReturnData hystrixError() throws Exception{
         try {
-            hiveApi.hystrixError();
-            return ReturnData.success( );
+            return ReturnData.success( hiveApi.hystrixError() );
         } catch (Exception e) {
             return ReturnData.failed(e.getMessage());
         }

@@ -10,8 +10,8 @@ public interface HystrixTestService {
 
     String hystrixSuccess();
 
-    void hystrixTimeOut();
+    String hystrixTimeOut();
 
-    void hystrixError() throws Exception;
+    String hystrixError() throws Exception;
 
 }

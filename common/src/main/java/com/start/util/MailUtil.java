@@ -39,8 +39,6 @@ public class MailUtil {
     private String exchangePassword;
     @Value("${mail.exchange.server:outlook.live.com}")
     private String exchangeServer;
-    @Value("${web.domain}")
-    private String webDomain;
 
     /**
      * 发送邮件
