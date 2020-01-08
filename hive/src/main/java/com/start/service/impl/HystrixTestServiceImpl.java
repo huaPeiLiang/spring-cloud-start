@@ -31,7 +31,7 @@ public class HystrixTestServiceImpl implements HystrixTestService {
     @Override
     public String hystrixError() throws Exception{
         try {
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @FeignClient(name = "HIVE",
-        configuration = {StashErrorDecoder.class, FeignRequest.class},
-        fallback = HiveApiFallBack.class
+        configuration = {StashErrorDecoder.class, FeignRequest.class}
+//        fallback = HiveApiFallBack.class
 //        fallbackFactory = HiveFallBackFactory.class
 )
 @Component
 public interface HiveApi {
 
-    // 默认的hystrix key：Hive#hystrixSuccess()  如果这个方法接收参数比如接收一个String，那么key：Hive#hystrixSuccess(String) 多个参数的以,号分隔
+    // 默认的hystrix key：HiveApi#hystrixSuccess()  如果这个方法接收参数比如接收一个String，那么key：Hive#hystrixSuccess(String) 多个参数的以,号分隔
     @RequestMapping("/hystrix/success")
     String hystrixSuccess();
 
