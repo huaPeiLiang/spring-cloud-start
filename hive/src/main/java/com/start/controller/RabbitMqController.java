@@ -21,4 +21,13 @@ public class RabbitMqController {
         rabbitMqService.directSend();
     }
 
+    @RequestMapping("/topic/send")
+    public void topicSend(){
+        rabbitMqService.topicSend();
+    }
+
+    @RequestMapping("/test")
+    public String test(){
+        return rabbitMqService.test();
+    }
 }
