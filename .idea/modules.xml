@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/facade/facade.iml" filepath="$PROJECT_DIR$/facade/facade.iml" />
       <module fileurl="file://$PROJECT_DIR$/hive/hive.iml" filepath="$PROJECT_DIR$/hive/hive.iml" />
       <module fileurl="file://$PROJECT_DIR$/hiveribbon/hiveribbon.iml" filepath="$PROJECT_DIR$/hiveribbon/hiveribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/monitor/monitor.iml" filepath="$PROJECT_DIR$/monitor/monitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-start.iml" filepath="$PROJECT_DIR$/spring-cloud-start.iml" />
     </modules>
   </component>

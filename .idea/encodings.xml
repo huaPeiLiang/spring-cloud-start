@@ -6,7 +6,7 @@
     <file url="file://$PROJECT_DIR$/eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/facade" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hive" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/hive1" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hiveribbon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/monitor" charset="UTF-8" />
   </component>
 </project>
