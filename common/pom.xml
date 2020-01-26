@@ -128,17 +128,7 @@
         <artifactId>xmlworker</artifactId>
         <version>5.4.1</version>
     </dependency>
-    <!-- pdf box -->
-    <dependency>
-        <groupId>org.apache.pdfbox</groupId>
-        <artifactId>pdfbox</artifactId>
-        <version>2.0.16</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.pdfbox</groupId>
-        <artifactId>pdfbox-tools</artifactId>
-        <version>2.0.16</version>
-    </dependency>
+
     <!-- alipay -->
     <dependency>
         <groupId>com.alipay.sdk</groupId>
