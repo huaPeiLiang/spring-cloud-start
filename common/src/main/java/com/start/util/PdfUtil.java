@@ -118,7 +118,7 @@ public class PdfUtil {
     }
 
     // 电子签章
-    public void sign(String src, String target, SignatureInfo signatureInfo) {
+    public static void sign(String src, String target, SignatureInfo signatureInfo) {
         InputStream inputStream = null;
         FileOutputStream outputStream = null;
         ByteArrayOutputStream result = new ByteArrayOutputStream();
