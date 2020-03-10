@@ -1,4 +1,4 @@
-package com.start.model;
+package com.start.model.util;
 import com.itextpdf.text.pdf.PdfSignatureAppearance;
 import java.security.PrivateKey;
 import java.security.cert.Certificate;

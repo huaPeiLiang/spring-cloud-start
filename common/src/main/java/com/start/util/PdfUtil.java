@@ -3,7 +3,7 @@ package com.start.util;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.start.enumeration.util.ReplacePdfEnum;
-import com.start.model.SignatureInfo;
+import com.start.model.util.SignatureInfo;
 import org.springframework.util.Assert;
 
 import java.io.ByteArrayOutputStream;
@@ -24,13 +24,9 @@ import com.itextpdf.text.pdf.security.MakeSignature;
 import com.itextpdf.text.pdf.security.PrivateKeySignature;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.cert.Certificate;
