@@ -22,4 +22,6 @@ public interface CacheService {
     void setExpireTime(final String key, final long expireTime);
 
     Long getExpireTime(final String key);
+    boolean lock(String key);
+    void delete(String key);
 }
