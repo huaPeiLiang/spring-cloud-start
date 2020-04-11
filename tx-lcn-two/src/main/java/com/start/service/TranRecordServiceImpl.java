@@ -16,9 +16,6 @@ public class TranRecordServiceImpl {
     @LcnTransaction
     @Transactional
     public TranRecord add(Integer accountId, Double changeAmount, String changeType){
-
-        int i = 0/0;
-
         TranRecord tranRecord = new TranRecord();
         tranRecord.setAccountId(accountId);
         tranRecord.setChangeAmount(changeAmount);

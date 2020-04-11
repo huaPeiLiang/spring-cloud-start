@@ -52,6 +52,7 @@ public class AccountServiceImpl {
         // 添加转账记录
         txLcnTwoApi.add(requestVo.getSourceAccountId(),requestVo.getAmount(),"支出");
         txLcnTwoApi.add(requestVo.getTargetAccountId(),requestVo.getAmount(),"收入");
+        int i = 0/0;
     }
 
 }
