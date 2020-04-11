@@ -2,10 +2,7 @@ package com.start.entity.root;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -16,6 +13,7 @@ public class TranRecord implements Serializable {
     private static final long serialVersionUID = 3510465491044226854L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -24,4 +22,7 @@ public class TranRecord implements Serializable {
 
     @Column(name = "changeAmount")
     private Double changeAmount;
+
+    @Column(name = "changeType")
+    private String changeType;
 }

@@ -12,10 +12,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableFeignClients
 @EnableAsync
 @EnableDistributedTransaction
-public class TxLcnOneApplication {
+public class TxLcnTwoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TxLcnOneApplication.class, args);
+        SpringApplication.run(TxLcnTwoApplication.class, args);
     }
 
 }
