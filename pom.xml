@@ -18,5 +18,6 @@
         <module>monitor</module>
         <module>tx-lcn-one</module>
         <module>tx-lcn-two</module>
+        <module>Elasticsearch</module>
     </modules>
 </project>
