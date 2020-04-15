@@ -14,7 +14,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  * replicas：副本数量，默认1
  * */
 @Data
-@Document(indexName = "dataBase",type = "item", shards = 1, replicas = 0)
+@Document(indexName = "database",type = "item", shards = 1, replicas = 0)
 public class Item {
 
     @Id
@@ -40,7 +40,7 @@ public class Item {
     @Field(type = FieldType.Keyword)
     private String category;// 分类
 
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Keyword, fielddata=true)
     private String brand; // 品牌
 
     @Field(type = FieldType.Double)
