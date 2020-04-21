@@ -2,7 +2,6 @@ import com.start.ElasticsearchApplication;
 import com.start.entity.root.Item;
 import com.start.repository.ItemRepository;
 import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.Aggregations;
@@ -198,10 +197,12 @@ public class EsDemoApplicationTests {
      * */
     @Test
     public void testTemplateQuery(){
-        TermsAggregationBuilder brand = AggregationBuilders.terms("brands").field("brand");
+        TermsAggregationBuilder brand = AggregationBuilders.terms("brands").field("brand").subAggregation(
+                AggregationBuilders.avg("priceAvg").field("price")
+        );
 
-        QueryBuilder queryBuilder = QueryBuilders.boolQuery()
-                .filter(QueryBuilders.termQuery("category", "机"));
+//        QueryBuilder queryBuilder = QueryBuilders.boolQuery()
+//                .filter(QueryBuilders.termQuery("category", "机"))
 //                .filter(QueryBuilders.termQuery("brand", "华为"));
 
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
@@ -219,90 +220,17 @@ public class EsDemoApplicationTests {
 
         StringTerms teamAgg = (StringTerms) aggregations.asMap().get("brands");
         List<StringTerms.Bucket> buckets = teamAgg.getBuckets();
-        for(StringTerms.Bucket bucket:buckets) {
-            // 结构化地址
+        for(StringTerms.Bucket bucket : buckets) {
+            // 获取聚合结果
             String key = bucket.getKeyAsString();
             System.out.println(key);
             long docCount = bucket.getDocCount();
             System.out.println(docCount);
 
+            // 获取子聚合结果
+            InternalAvg avg = (InternalAvg) bucket.getAggregations().asMap().get("priceAvg");
+            System.out.println("平均售价：" + avg.getValue());
         }
-
-        System.out.println("");
-
-//        String hisAddress = "上海市上海市静安区静安路100号静安寺";
-//        List<HistoryIndexDocument> prepareList = new ArrayList<HistoryIndexDocument>();
-//        Map<String,String> bucketMap = new HashMap<String, String>();
-//        bucketMap.put("formatCount", "_count");
-//
-//// 根据全量地址和寄派类型查询数据（此处使用filter过滤，它能缓存数据且不参与计算分值，比query速度快）
-//        QueryBuilder queryBuilder = QueryBuilders
-//                .boolQuery()
-//                .filter(QueryBuilders.termQuery("hisAddress", entity.getHisAddress()))
-//                .filter(QueryBuilders.termQuery("rangeType", entity.getRangeType()));
-//        // 结构化地址聚合桶
-//        TermsBuilder format_address_aggs = AggregationBuilders.terms("format_address_aggs").field("formatAddress");
-//        // 签收网点聚合桶
-//        TermsBuilder sign_org_aggs = AggregationBuilders.terms("sign_org_aggs").field("signOrgCode");
-//// 管道聚合，类似having count(*) > 10
-//        BucketSelectorBuilder bucketSelectorBuilder = PipelineAggregatorBuilders
-//                .having("having")
-//                .setBucketsPathsMap(bucketMap)
-//                .script(new Script("formatCount>10"));
-//
-//// 嵌套聚合，类似在group by formatAddress的基础上再group by signOrgCode
-//        format_address_aggs.subAggregation(sign_org_aggs);
-//// 嵌套聚合，筛选数量大于10的结构化地址
-//        format_address_aggs.subAggregation(bucketSelectorBuilder);
-//// 嵌套聚合，筛选数量大于10的签收网点
-//        sign_org_aggs.subAggregation(bucketSelectorBuilder);
-//
-//        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-//                .withIndices("my_index").withTypes("my_type")
-//                .withQuery(queryBuilder)
-//                .withPageable(new PageRequest(0, 1, null))
-//                .addAggregation(format_address_aggs)
-//                .build();
-//
-//// 执行语句获取聚合结果
-//        Aggregations aggregations = elasticsearchTemplate.query(searchQuery, new ResultsExtractor<Aggregations>() {
-//
-//            @Override
-//            public Aggregations extract(SearchResponse response) {
-//                return response.getAggregations();
-//            }
-//        });
-//
-//// 获取聚合结果
-//        StringTerms teamAgg = (StringTerms) aggregations.asMap().get("format_address_aggs");
-//        List<Bucket> bucketList = teamAgg.getBuckets();
-//        for(Bucket bucket:bucketList) {
-//            // 结构化地址
-//            String formatAddress = bucket.getKeyAsString();
-//            System.out.println(formatAddress);
-//
-//            Aggregations signAggs = bucket.getAggregations();
-//            StringTerms signTerms = (StringTerms) signAggs.asMap().get("sign_org_aggs");
-//            List<Bucket> signBucketList = signTerms.getBuckets();
-//            // 签收网点只能一个
-//            if(signBucketList==null || signBucketList.size() >1) {
-//                continue;
-//            }
-//
-//            Bucket signBucket = signBucketList.get(0);
-//            // 签收频次需要5次以上
-//            if(signBucket.getDocCount() >= 5) {
-//
-//                // 满足条件的网点放入prepareList
-//                HistoryIndexDocument entity = new HistoryIndexDocument();
-//                entity.setFormatAddress(formatAddress);
-//                entity.setSignOrgCode(signBucket.getKeyAsString());
-//                prepareList.add(entity);
-//            }
-//        }
-//
-//        System.out.println(FastJsonUtil.toJsonString(prepareList));
-
     }
 
     /**
