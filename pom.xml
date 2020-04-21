@@ -19,5 +19,6 @@
         <module>tx-lcn-one</module>
         <module>tx-lcn-two</module>
         <module>Elasticsearch</module>
+        <module>websocket</module>
     </modules>
 </project>
