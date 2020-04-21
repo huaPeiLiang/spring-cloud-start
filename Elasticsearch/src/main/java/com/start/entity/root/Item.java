@@ -40,7 +40,7 @@ public class Item {
     @Field(type = FieldType.Keyword)
     private String category;// 分类
 
-    @Field(type = FieldType.Text, fielddata=true)
+    @Field(type = FieldType.Keyword)
     private String brand; // 品牌
 
     @Field(type = FieldType.Double)

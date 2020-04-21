@@ -2,6 +2,7 @@ import com.start.ElasticsearchApplication;
 import com.start.entity.root.Item;
 import com.start.repository.ItemRepository;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.Aggregations;
@@ -25,7 +26,9 @@ import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 
 @RunWith(SpringRunner.class)
@@ -58,7 +61,7 @@ public class EsDemoApplicationTests {
      */
     @Test
     public void insert() {
-        Item item = new Item(1L, "小米手机7", " 手机",
+        Item item = new Item(1L, "小米手机7", "手机",
                 "小米", 3499.00, "http://xxxxxxx.jpg");
         itemRepository.save(item);
     }
@@ -69,17 +72,17 @@ public class EsDemoApplicationTests {
     @Test
     public void insertList() {
         List<Item> list = new ArrayList<>();
-        list.add(new Item(2L, "坚果手机R1", " 手机", "锤子", 3699.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(3L, "华为META10", " 手机", "华为", 4499.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(4L, "苹果8", " 手机", "苹果", 3000.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(5L, "苹果XS", " 手机", "苹果", 8999.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(6L, "华为META11", " 手机", "华为", 9999.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(7L, "OPPO R11", " 手机", "OPPO", 3599.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(8L, "华为META9", " 手机", "华为", 3999.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(9L, "华为META8", " 手机", "华为", 3599.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(10L, "华为META7", " 手机", "华为", 3099.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(11L, "华为META6", " 手机", "华为", 2399.00, "http://xxxxxxx.jpg"));
-        list.add(new Item(12L, "华为META5", " 手机", "华为", 1599.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(2L, "坚果手机R1", "手机", "锤子", 3699.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(3L, "华为META10", "手机", "华为", 4499.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(4L, "苹果8", "手机", "苹果", 3000.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(5L, "苹果XS", "手机", "苹果", 8999.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(6L, "华为META11", "手机", "华为", 9999.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(7L, "OPPO R11", "手机", "OPPO", 3599.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(8L, "华为META9", "手机", "华为", 3999.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(9L, "华为META8", "手机", "华为", 3599.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(10L, "华为META7", "手机", "华为", 3099.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(11L, "华为META6", "手机", "华为", 2399.00, "http://xxxxxxx.jpg"));
+        list.add(new Item(12L, "华为META5", "手机", "华为", 1599.00, "http://xxxxxxx.jpg"));
         itemRepository.saveAll(list);
     }
 
@@ -103,7 +106,7 @@ public class EsDemoApplicationTests {
 
         // 基本分词查询（matchQuery:关键字命中   matchPhraseQuery：精准命中）
 //        queryBuilder.withQuery(QueryBuilders.matchQuery("title", "小米手机"));
-        queryBuilder.withQuery(QueryBuilders.matchPhraseQuery("title", "小米手机"));
+        queryBuilder.withQuery(QueryBuilders.matchPhraseQuery("brand", "小米"));
 
         // 过滤
 //        queryBuilder.withFilter(QueryBuilders.rangeQuery("price").gt(3500));
@@ -117,6 +120,23 @@ public class EsDemoApplicationTests {
         for (Item item : items) {
             System.out.println(item);
         }
+    }
+
+    @Test
+    public void test(){
+        QueryBuilder queryBuilder = QueryBuilders.boolQuery()
+                .filter(QueryBuilders.matchPhraseQuery("category", "手机"))
+                .filter(QueryBuilders.matchPhraseQuery("brand", "为"));
+
+        TermsAggregationBuilder brand = AggregationBuilders.terms("brands").field("brand");
+
+        SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withIndices("database").withTypes("item")
+                .withQuery(queryBuilder)
+                .addAggregation(brand)
+                .build();
+
+        List<Item> items = elasticsearchTemplate.queryForList(searchQuery, Item.class);
     }
 
     /**
@@ -201,13 +221,8 @@ public class EsDemoApplicationTests {
                 AggregationBuilders.avg("priceAvg").field("price")
         );
 
-//        QueryBuilder queryBuilder = QueryBuilders.boolQuery()
-//                .filter(QueryBuilders.termQuery("category", "机"))
-//                .filter(QueryBuilders.termQuery("brand", "华为"));
-
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
                 .withIndices("database").withTypes("item")
-//                .withQuery(queryBuilder)
                 .addAggregation(brand)
                 .build();
 
