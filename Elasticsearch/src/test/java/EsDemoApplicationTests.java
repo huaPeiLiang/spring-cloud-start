@@ -45,7 +45,12 @@ public class EsDemoApplicationTests {
      */
     @Test
     public void createIndex() {
-        elasticsearchTemplate.createIndex(Item.class);
+
+        // 不忽略@Field设置
+        elasticsearchTemplate.putMapping(Item.class);
+
+        // 会忽略@Field设置
+//        elasticsearchTemplate.createIndex(Item.class);
     }
 
     /**

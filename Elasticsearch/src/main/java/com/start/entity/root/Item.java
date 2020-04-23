@@ -30,11 +30,11 @@ public class Item {
      *          需要指定一个精度因子，比如10或100。elasticsearch会把真实值乘以这个因子后存储，取出时再还原。
      *      Date：日期类型
      *          elasticsearch可以对日期格式化为字符串存储，但是建议我们存储为毫秒值，存储为long，节省空间。
-     * index：是否索引，布尔类型，默认是true
-     * store：是否存储，布尔类型，默认是false
-     * analyzer：分词器名称，这里的ik_max_word即使用ik分词器
+     * analyzer：分词器名称
+     * fielddata：只有在type=text的时候生效
+     * index：默认情况下分词，一般默认分词就好，除非这个字段你确定查询时不会用到
      * */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    @Field(type = FieldType.Text, fielddata = true)
     private String title; //标题
 
     @Field(type = FieldType.Keyword)
@@ -46,7 +46,7 @@ public class Item {
     @Field(type = FieldType.Double)
     private Double price; // 价格
 
-    @Field(index = false, type = FieldType.Keyword)
+    @Field(index = false, type = FieldType.Text)
     private String images; // 图片地址
 
     public Item() {}
