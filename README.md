@@ -15,7 +15,7 @@
 
 ![image](https://raw.githubusercontent.com/wiki/huaPeiLiang/spring-cloud-start/img/ReadMe-1.png)
 
-#### 使用的技术
+#### 技术栈
 
 注册中心：Eureka
 
