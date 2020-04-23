@@ -15,7 +15,7 @@
 
 ![image](https://raw.githubusercontent.com/wiki/huaPeiLiang/spring-cloud-start/img/ReadMe-1.png)
 
-#### 使用的技术
+#### 技术栈
 
 注册中心：Eureka
 
@@ -31,7 +31,9 @@
 
 消息中间件：RabbitMQ
 
-分布式事务：Hmily
+分布式事务：Hmily、TX-LCN
+
+搜索引擎：Elasticsearch
 
 存储：Mysql+MongoDB+Redis
 
