@@ -31,7 +31,9 @@
 
 消息中间件：RabbitMQ
 
-分布式事务：Hmily
+分布式事务：Hmily、TX-LCN
+
+搜索引擎：Elasticsearch
 
 存储：Mysql+MongoDB+Redis
 
