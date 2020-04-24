@@ -109,9 +109,12 @@ public class EsDemoApplicationTests {
     public void testMatchQuery(){
         NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
 
-        // 基本分词查询（matchQuery:关键字命中   matchPhraseQuery：精准命中）
-//        queryBuilder.withQuery(QueryBuilders.matchQuery("title", "小米手机"));
-        queryBuilder.withQuery(QueryBuilders.matchPhraseQuery("brand", "小米"));
+        /*
+        基本分词查询（matchQuery:关键字命中   matchPhraseQuery：精准命中）
+        如果映射为keyword类型，matchQuery搜索时无法分词命中
+         */
+        queryBuilder.withQuery(QueryBuilders.matchQuery("title", "手机"));
+//        queryBuilder.withQuery(QueryBuilders.matchPhraseQuery("brand", "小米"));
 
         // 过滤
 //        queryBuilder.withFilter(QueryBuilders.rangeQuery("price").gt(3500));
